@@ -14,6 +14,10 @@
 		0C63AF9422362152005A0315 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C63AF9222362152005A0315 /* LaunchScreen.storyboard */; };
 		0C63AF9F22362152005A0315 /* Swift_LearningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63AF9E22362152005A0315 /* Swift_LearningTests.swift */; };
 		0C63AFAA22362152005A0315 /* Swift_LearningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63AFA922362152005A0315 /* Swift_LearningUITests.swift */; };
+		0C63AFB82236245E005A0315 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C63AFB72236245E005A0315 /* BaseViewController.swift */; };
+		0C63AFBC22364188005A0315 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C63AFBA22364188005A0315 /* AddressBook.framework */; };
+		0C63AFBD22364188005A0315 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C63AFBB22364188005A0315 /* AddressBookUI.framework */; };
+		0C63AFBF22364302005A0315 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C63AFBE22364302005A0315 /* Contacts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		0C63AFA522362152005A0315 /* Swift LearningUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift LearningUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C63AFA922362152005A0315 /* Swift_LearningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_LearningUITests.swift; sourceTree = "<group>"; };
 		0C63AFAB22362152005A0315 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C63AFB72236245E005A0315 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0C63AFBA22364188005A0315 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		0C63AFBB22364188005A0315 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		0C63AFBE22364302005A0315 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C63AFBF22364302005A0315 /* Contacts.framework in Frameworks */,
+				0C63AFBC22364188005A0315 /* AddressBook.framework in Frameworks */,
+				0C63AFBD22364188005A0315 /* AddressBookUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +92,7 @@
 				0C63AF9D22362152005A0315 /* Swift LearningTests */,
 				0C63AFA822362152005A0315 /* Swift LearningUITests */,
 				0C63AF8722362150005A0315 /* Products */,
+				0C63AFB922364187005A0315 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +115,7 @@
 				0C63AF9022362152005A0315 /* Assets.xcassets */,
 				0C63AF9222362152005A0315 /* LaunchScreen.storyboard */,
 				0C63AF9522362152005A0315 /* Info.plist */,
+				0C63AFB72236245E005A0315 /* BaseViewController.swift */,
 			);
 			path = "Swift Learning";
 			sourceTree = "<group>";
@@ -123,6 +136,16 @@
 				0C63AFAB22362152005A0315 /* Info.plist */,
 			);
 			path = "Swift LearningUITests";
+			sourceTree = "<group>";
+		};
+		0C63AFB922364187005A0315 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C63AFBE22364302005A0315 /* Contacts.framework */,
+				0C63AFBA22364188005A0315 /* AddressBook.framework */,
+				0C63AFBB22364188005A0315 /* AddressBookUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +281,7 @@
 			files = (
 				0C63AF8C22362150005A0315 /* ViewController.swift in Sources */,
 				0C63AF8A22362150005A0315 /* AppDelegate.swift in Sources */,
+				0C63AFB82236245E005A0315 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
