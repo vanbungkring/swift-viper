@@ -10,8 +10,8 @@ import UIKit
 import AddressBook
 import Contacts
 
-class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate {
-   
+class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate,CustomAlertDelegate {
+    
     let arrayOfContact = NSMutableArray();
     let store = CNContactStore()
     
@@ -23,53 +23,29 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
         self.fetchContact()
         
     }
     @IBAction func contactAddButtonDidtapped(_ sender: Any) {
         
-        let alertController =  CustomAlert.showAlert(title: "Add New contact?", messages: "Are you sure?")
+        let alertController =  CustomAlert.showAlert(title: "Add New contact?", messages: "Are you sure?",delegates: self)
         self.present(alertController, animated: true, completion: nil)
-
-//        let saveAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { alert -> Void in
-//            let firstTextField = alertController.textFields![0] as UITextField
-//            let secondTextField = alertController.textFields![1] as UITextField
-//            let newContact = CNMutableContact()
-//            newContact.givenName = firstTextField.text ?? "";
-//            newContact.phoneNumbers = [CNLabeledValue(
-//                label:CNLabelPhoneNumberiPhone,
-//                value:CNPhoneNumber(stringValue:secondTextField.text!))]
-//            do {
-//                /// adding behavior to execute the add new contact
-//                let saveRequest = CNSaveRequest()
-//                saveRequest.add(newContact, toContainerWithIdentifier: nil)
-//                try! self.store.execute(saveRequest);
-//                self.fetchContact();
-//            }
-//        })
-//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
-//            (action : UIAlertAction!) -> Void in })
-//        alertController.addAction(saveAction)
-//        alertController.addAction(cancelAction)
-//
-//        self.present(alertController, animated: true, completion: nil)
-  }
-
-    func showCustomAlert() -> UIAlertController{
-        let alertController = UIAlertController(title: "Add New Contact", message: "", preferredStyle: UIAlertController.Style.alert)
-                alertController.addTextField { (textField : UITextField!) -> Void in
-                    textField.placeholder = "Enter Name"
-                }
-                alertController.addTextField { (textField : UITextField!) -> Void in
-                    textField.keyboardType = .numberPad
-                    textField.placeholder = "Enter PhoneNumber"
-                }
-        return alertController;
     }
-
     
+    func saveButtonDiDtapped(contact: NSDictionary) {
+        let newContact = CNMutableContact()
+        newContact.givenName = contact["NAME"] as! String;
+        newContact.phoneNumbers = [CNLabeledValue(
+            label:CNLabelPhoneNumberiPhone,
+            value:CNPhoneNumber(stringValue:contact["PHONE"]as! String))]
+        do {
+            /// adding behavior to execute the add new contact
+            let saveRequest = CNSaveRequest()
+            saveRequest.add(newContact, toContainerWithIdentifier: nil)
+            try! self.store.execute(saveRequest);
+            self.fetchContact();
+        }
+    }
     private func fetchContact(){
         ///remove all data cache everytime fetch the table
         self.arrayOfContact.removeAllObjects();
@@ -80,7 +56,6 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
                 return
             }
             if granted {
-                print("Access Granted");
                 let keys = [CNContactGivenNameKey,CNContactPhoneNumbersKey]
                 let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                 do {
@@ -90,7 +65,7 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
                     self.tableView.reloadData();
                 }
             } else {
-                print ("Denied Permission");
+                self.showAlert(title: "Error", msg:"Denied Permission")
             }
         }
     }
@@ -98,20 +73,16 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.arrayOfContact.count;
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        //casting the array of object into contact  object
         var contactObject = CNContact();
         contactObject = self.arrayOfContact[indexPath.row] as! CNContact;
-        
         cell.textLabel?.text = contactObject.givenName;
-        
         cell.detailTextLabel?.text = contactObject.phoneNumbers.first?.value.stringValue ?? "";
-        
         return cell
     }
     
-   
+    
 }
 
