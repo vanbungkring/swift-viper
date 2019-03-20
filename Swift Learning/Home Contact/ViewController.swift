@@ -29,36 +29,44 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
         
     }
     @IBAction func contactAddButtonDidtapped(_ sender: Any) {
-        let alertController = UIAlertController(title: "Add New Contact", message: "", preferredStyle: UIAlertController.Style.alert)
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter Name"
-        }
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.keyboardType = .numberPad
-            textField.placeholder = "Enter PhoneNumber"
-        }
-        let saveAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { alert -> Void in
-            let firstTextField = alertController.textFields![0] as UITextField
-            let secondTextField = alertController.textFields![1] as UITextField
-            let newContact = CNMutableContact()
-            newContact.givenName = firstTextField.text ?? "";
-            newContact.phoneNumbers = [CNLabeledValue(
-                label:CNLabelPhoneNumberiPhone,
-                value:CNPhoneNumber(stringValue:secondTextField.text!))]
-            do {
-                /// adding behavior to execute the add new contact
-                let saveRequest = CNSaveRequest()
-                saveRequest.add(newContact, toContainerWithIdentifier: nil)
-                try! self.store.execute(saveRequest);
-                self.fetchContact();
-            }
-        })
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
-            (action : UIAlertAction!) -> Void in })
-        alertController.addAction(saveAction)
-        alertController.addAction(cancelAction)
         
+        let alertController =  CustomAlert.showAlert(title: "Add New contact?", messages: "Are you sure?")
         self.present(alertController, animated: true, completion: nil)
+
+//        let saveAction = UIAlertAction(title: "Save", style: UIAlertAction.Style.default, handler: { alert -> Void in
+//            let firstTextField = alertController.textFields![0] as UITextField
+//            let secondTextField = alertController.textFields![1] as UITextField
+//            let newContact = CNMutableContact()
+//            newContact.givenName = firstTextField.text ?? "";
+//            newContact.phoneNumbers = [CNLabeledValue(
+//                label:CNLabelPhoneNumberiPhone,
+//                value:CNPhoneNumber(stringValue:secondTextField.text!))]
+//            do {
+//                /// adding behavior to execute the add new contact
+//                let saveRequest = CNSaveRequest()
+//                saveRequest.add(newContact, toContainerWithIdentifier: nil)
+//                try! self.store.execute(saveRequest);
+//                self.fetchContact();
+//            }
+//        })
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: {
+//            (action : UIAlertAction!) -> Void in })
+//        alertController.addAction(saveAction)
+//        alertController.addAction(cancelAction)
+//
+//        self.present(alertController, animated: true, completion: nil)
+  }
+
+    func showCustomAlert() -> UIAlertController{
+        let alertController = UIAlertController(title: "Add New Contact", message: "", preferredStyle: UIAlertController.Style.alert)
+                alertController.addTextField { (textField : UITextField!) -> Void in
+                    textField.placeholder = "Enter Name"
+                }
+                alertController.addTextField { (textField : UITextField!) -> Void in
+                    textField.keyboardType = .numberPad
+                    textField.placeholder = "Enter PhoneNumber"
+                }
+        return alertController;
     }
 
     
