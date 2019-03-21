@@ -14,6 +14,8 @@ protocol CustomAlertDelegate {
 }
 
 class CustomAlert {
+    
+    ///fix that, need initialize
     static func showAlert(title:String,messages:String,delegates:CustomAlertDelegate) -> UIAlertController {
         let alertController = UIAlertController(title: title,
                                                 message: messages,
@@ -45,6 +47,7 @@ class CustomAlert {
         
         return saveAction;
     }
+    
     private static func cancelAction(alertController:UIAlertController) -> UIAlertAction {
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (action : UIAlertAction!) -> Void in });
         return cancelAction;

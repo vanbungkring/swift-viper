@@ -12,9 +12,9 @@ import Contacts
 
 class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate,CustomAlertDelegate {
     
-    let arrayOfContact = NSMutableArray();
+    var arrayOfContact = NSMutableArray();
     let store = CNContactStore()
-    
+    let contactInteractor = ContactInteractor()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,7 +24,8 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fetchContact()
-        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
     }
     @IBAction func contactAddButtonDidtapped(_ sender: Any) {
         
@@ -49,19 +50,15 @@ class ViewController: BaseViewController,UITableViewDataSource,UITableViewDelega
     private func fetchContact(){
         ///remove all data cache everytime fetch the table
         self.arrayOfContact.removeAllObjects();
-        print("attempting request contact access");
         store.requestAccess(for: .contacts) { (granted, err) in
             if let err = err {
                 self.showAlert(title: "Error", msg: err.localizedDescription)
                 return
             }
             if granted {
-                let keys = [CNContactGivenNameKey,CNContactPhoneNumbersKey]
-                let request = CNContactFetchRequest(keysToFetch: keys as [CNKeyDescriptor])
                 do {
-                    try! self.store.enumerateContacts(with: request, usingBlock: { (contact, stop) in
-                        self.arrayOfContact.add(contact);
-                    })
+                    let contactAray = self.contactInteractor.loadContact(contact: self.store)
+                    self.arrayOfContact = contactAray as! NSMutableArray;
                     self.tableView.reloadData();
                 }
             } else {

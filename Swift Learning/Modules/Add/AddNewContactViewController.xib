@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNewContactViewController" customModule="Swift_Learning" customModuleProvider="target">
+            <connections>
+                <outlet property="nameTextField" destination="fDf-kf-FyI" id="fiP-Zq-GgQ"/>
+                <outlet property="phoneNumberTextField" destination="kNf-Mr-avN" id="xWj-IG-vA6"/>
+                <outlet property="view" destination="iN0-l3-epB" id="TIY-uh-NQS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1I-yn-m6u">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1K-Hq-tuC">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fDf-kf-FyI">
+                                    <rect key="frame" x="8" y="39" width="359" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kNf-Mr-avN">
+                                    <rect key="frame" x="8" y="88" width="359" height="30"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Al0-sH-ESb">
+                                    <rect key="frame" x="8" y="143" width="359" height="30"/>
+                                    <state key="normal" title="Add New Contact"/>
+                                    <connections>
+                                        <action selector="addNewContactDidTapped:" destination="-1" eventType="touchUpInside" id="gwR-sh-H9r"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="kNf-Mr-avN" firstAttribute="top" secondItem="fDf-kf-FyI" secondAttribute="bottom" constant="19" id="6hS-XZ-JOZ"/>
+                                <constraint firstAttribute="bottom" secondItem="Al0-sH-ESb" secondAttribute="bottom" constant="80" id="9PM-xj-PjH"/>
+                                <constraint firstItem="Al0-sH-ESb" firstAttribute="leading" secondItem="S1K-Hq-tuC" secondAttribute="leading" constant="8" id="DHJ-oc-fHu"/>
+                                <constraint firstAttribute="trailing" secondItem="kNf-Mr-avN" secondAttribute="trailing" constant="8" id="I4O-wz-a92"/>
+                                <constraint firstAttribute="trailing" secondItem="Al0-sH-ESb" secondAttribute="trailing" constant="8" id="Jy6-Z9-HNn"/>
+                                <constraint firstItem="fDf-kf-FyI" firstAttribute="top" secondItem="S1K-Hq-tuC" secondAttribute="top" constant="39" id="cHP-dj-Gln"/>
+                                <constraint firstItem="kNf-Mr-avN" firstAttribute="leading" secondItem="S1K-Hq-tuC" secondAttribute="leading" constant="8" id="mYI-Q7-ChX"/>
+                                <constraint firstItem="fDf-kf-FyI" firstAttribute="leading" secondItem="S1K-Hq-tuC" secondAttribute="leading" constant="8" id="sPA-Hy-P1s"/>
+                                <constraint firstItem="Al0-sH-ESb" firstAttribute="top" secondItem="kNf-Mr-avN" secondAttribute="bottom" constant="25" id="xVI-hy-iqi"/>
+                                <constraint firstAttribute="trailing" secondItem="fDf-kf-FyI" secondAttribute="trailing" constant="8" id="zlP-38-gKF"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="S1K-Hq-tuC" firstAttribute="width" secondItem="L1I-yn-m6u" secondAttribute="width" id="3gV-ZJ-IE8"/>
+                        <constraint firstItem="S1K-Hq-tuC" firstAttribute="top" secondItem="L1I-yn-m6u" secondAttribute="top" id="4dt-gU-Ssb"/>
+                        <constraint firstAttribute="bottom" secondItem="S1K-Hq-tuC" secondAttribute="bottom" id="5ft-SH-xpL"/>
+                        <constraint firstAttribute="trailing" secondItem="S1K-Hq-tuC" secondAttribute="trailing" id="89W-Q1-pwF"/>
+                        <constraint firstItem="S1K-Hq-tuC" firstAttribute="leading" secondItem="L1I-yn-m6u" secondAttribute="leading" id="ZPN-Bu-Bzt"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="L1I-yn-m6u" secondAttribute="top" constant="20" id="8yM-dM-QpX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="L1I-yn-m6u" secondAttribute="trailing" id="UIL-30-JNZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="L1I-yn-m6u" secondAttribute="bottom" id="bEb-1s-5bh"/>
+                <constraint firstItem="L1I-yn-m6u" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fvV-2y-u3E"/>
+                <constraint firstItem="L1I-yn-m6u" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="pkd-PQ-slq"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-108" y="22.938530734632685"/>
+        </view>
+    </objects>
+</document>
